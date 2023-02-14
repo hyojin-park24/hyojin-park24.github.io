@@ -1,420 +1,87 @@
-# Cactus
-
-A responsive, clean and simple [Hexo](http://hexo.io) theme for a personal website.
-
-:cactus: [Demo](https://probberechts.github.io/hexo-theme-cactus/)
-
-![screenshot](https://user-images.githubusercontent.com/2175271/137625287-24a4ac77-fbc9-4c99-a4cd-90455d93d13c.png)
-
-## Summary
-
-- [General](#general)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Install](#install)
-- [Configuration](#configuration)
-- [License](#license)
-
-## General
-
-- **Version** : 3.0
-- **Compatibility** : Hexo 3 or later
-
-## Features
-
-- Fully responsive
-- Multiple color schemes
-- Pick your own code highlighting scheme
-- Configurable navigation menu
-- Support for local search
-- Projects list
-- I18n support
-- Disqus / Utterances
-- Google analytics / Baidu Tongji / [Umami Analytics](https://umami.is) 
-- Font Awesome icons
-- Simplicity
-
-## Prerequisites
-
-1. In order to use this theme you must have installed [hexo](https://hexo.io/docs/).
-
-2. Create the `root` directory for the blog by initializing it with hexo:
-
-    ```sh
-    $ hexo init my-blog
-    ```
-
-3. Navigate into the new directory:
-
-    ```sh
-    $ cd my-blog
-    ```
-
-## Install
-
-1. In the `root` directory:
-
-    ```sh
-    $ git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus
-    ```
-
-2. Change the `theme` property in the `_config.yml` file.
-
-    ```yml
-    # theme: landscape
-    theme: cactus
-    ```
-   
-   See below for more information on how to customize this theme.
-
-3. Create pages and articles with the `hexo new [layout] <title>` command.
-   For example, to create an "about me" page, run:
-   
-    ```sh
-    $ hexo new page about
-    ```
-   
-   This will create a new file in `source/about/index.md`
-   Similarly, you can create a new article with
-   
-    ```sh
-    $ hexo new post "hello world"
-    ```
-   
-   and add some interesting content in `source/_posts/hello-world.md`.
-
-4. Run: `hexo generate` and `hexo server`
-
-5. [Publish your blog](https://hexo.io/docs/one-command-deployment.html)!
-
-## Configuration
-
-You can (and should) modify a couple of settings. An overview of all settings
-can be found in  [_config.yml](_config.yml). The most important ones are
-discussed below.
-
-There are two possible methods to override the defaults. As a first option,
-you could fork the theme and maintain a custom branch with your settings.
-Alternatively, you can configure it from your site's primary configuration
-file. Therefore, define your custom settings under the `theme_config` variable.
-For example:
-
-```yml
-# _config.yml
-theme_config:
-  colorscheme: white
-```
-
-```yml
-# themes/cactus/_config.yml
-colorscheme: dark
-```
-
-This will override the default black colorscheme in `themes/cactus/_config.yml`.
-
-### Color scheme
-
-Currently, this theme is delivered with four color schemes: [dark](https://probberechts.github.io/hexo-theme-cactus/cactus-dark/public/), [light](https://probberechts.github.io/hexo-theme-cactus/cactus-light/public/),
-[white](https://probberechts.github.io/hexo-theme-cactus/cactus-white/public/) and [classic](https://probberechts.github.io/hexo-theme-cactus/cactus-classic/public/). Set your preferred color scheme in the `_config.yml` file.
-
-```yml
-colorscheme: light
-```
-
-Alternatively, you can easily create your own color scheme by creating a new
-file in `source/css/_colors`.
-
-### Navigation
-
-Set up the navigation menu in the `_config.yml`:
-
-```yml
-nav:
-  home: /
-  about: /about/
-  articles: /archives/
-  projects: http://github.com/probberechts
-  LINK_NAME: URL
-```
-
-### Blog posts list on home page
-
-You have two options for the list of blog posts on the home page:
-
-  - Show only the 5 most recent posts (default)
-
-    ```yml
-    posts_overview:
-      show_all_posts: false
-      post_count: 5
-    ```
-
-  - Show all posts
-
-    ```yml
-    posts_overview:
-      show_all_posts: true
-    ```
-
-### Projects list
-
-Create a projects file `source/_data/projects.json` to show a list of your projects on the index page.
-
-```json
-[
-    {
-       "name":"Hexo",
-       "url":"https://hexo.io/",
-       "desc":"A fast, simple & powerful blog framework"
-    },
-    {
-       "name":"Font Awesome",
-       "url":"http://fontawesome.io/",
-       "desc":"The iconic font and CSS toolkit"
-    }
-]
-```
-
-### Social media links
-
-Cactus can automatically add links to your social media accounts.
-Therefore, update the theme's `_config.yml`:
-
-```yml
-social_links:
-  github: your-github-url
-  twitter: your-twitter-url
-  NAME: your-NAME-url
-```
-
-where `NAME` is the name of a [Font Awesome icon](https://fontawesome.com/icons?d=gallery&s=brands).
-
-### Copyright years
-
-By default, Cactus will use current year in your copyright year information.
-If there is a need to customize, please update `_config.yml`:
-
-```yml
-copyright:
-  start_year: 2016
-  end_year:
-```
-
-### Language configuration
-
-If you are new to Hexo and internationalization (i18n), please read
-[Hexo documentation - internationalization (i18n) section](https://hexo.io/docs/internationalization.html)
-
-Currently, the theme is delivered with support for:
-
-- English (en), default
-- Brazilian Portuguese (pt-br)
-- Catalan (ca)
-- Chinese (Simplified, PRC) (zh-CN)
-- Dutch (nl)
-- French (fr)
-- Italian (it)
-- Persian (fa)
-- Russian (ru)
-- Spanish (es)
-- German (de)
-
-If you would like to use one the languages listed above, simply set `language`
-to the desired language (e.g., `fr`) in `_config.yml`.
-Otherwise, you can follow the steps below (E.g., to add a Japanese (ja) translation):
-
-1. Set `language` to `ja` in Hexo configuration file `_config.yml`
-2. Create a `ja.yml` file in the `themes/cactus/languages/` folder
-3. Copy the content of `themes/cactus/languages/default.yml` and paste it it into the `ja.yml` file
-4. Replace all English strings by their Japanese translation
-
-**Note: Cactus does not support multi-language sites.**
-
-### RTL support
-
-This theme support RTL languages for Persian and Arabic language.
-If you would like to use RTL layout, change `direction` attribute in `_config.yml` to `rtl`.
-Note that this also will change the font to [Vazir](https://github.com/rastikerdar/vazir-font), which is a Persian font.
-
-```
-direction: rtl
-```
-
-### RSS
-
-Set the `rss` field in the `_config.yml` to one of the following values:
-
-1. `rss: false` will totally disable rss (default).
-2. `rss: atom.xml` sets a specific feed link.
-3. `rss:`leave empty to use the [hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed) plugin.
-
-### Analytics
-
-Add you Google, Baidu, Cloudflare or Umami Analytics `tracking_id` to the `_config.yml`.
-
-```yml
-google_analytics:
-  enabled: true
-  id: 'UA-49627206-1'
-
-baidu_analytics:
-  enabled: true
-  id: 2e6da3c375c8a87f5b664cea6d4cb29c
-
-cloudflare_analytics:
-  enabled: true
-  id: 0dabb6e21848405483a237e6a7b6ed04
-
-umami_analytics:
-  enabled: false
-  id: e77e68be-f6e4-4br3-9365-2b76b57cd571
-  host: https://analytics.domain.com
-```
-
-### CDN
-
-Load Javascript and CSS resources from a CDN. Enabled by default, loads all resources from [cdnjs](https://cdnjs.com/).
-
-```yml
-cdn:
-  enable: true
-  jquery: 'url'
-  clipboard: 'url'
-  font_awesome: 'url'
-  justified_gallery_css: 'url'
-  justified_gallery_js: 'url'
-```
-
-Set `enable: false` to completely disable CDN and load all resources from your domain. If you want to disable it only for specific resource(s) then just remove the corresponding entry(s).
-
-```yml
-cdn:
-  enable: true
-  jquery: 'url'
-```
-
-Only JQuery will be loaded from the specified CDN.
-
-### Comments
-
-Cactus supports two commenting systems: [Disqus](https://disqus.com) and [Utterances](https://utteranc.es).
-
-#### Disqus
-
-First, create a site on Disqus: [https://disqus.com/admin/create/](http://disqus.com/admin/create/).
-
-Next, update the `_config.yml` file:
-
-```yml
-disqus:
-  enabled: true
-  shortname: SITENAME
-```
-
-where `SITENAME` is the name you gave your site on Disqus.
-
-#### Utterances
-
-First, follow the instructions on the [oficial website](https://utteranc.es/) to setup an issue tracker Utterances will connect to.
-
-Next, update the `_config.yml` file:
-
-```yml
-utterances:
-  enabled: true
-  repo: owner/githubrepo
-  issue_term: pathname
-  label: utteranc
-  theme: themename
-```
-
-where each of the parameters are the respective values ​​provided during the configuration of the Utterances:
-
-* `repo`:  the repository Utterances will connect to.
-* `issue_term`: the mapping between blog posts and GitHub issues.
-* `label`: the label that will be assigned to issues created by Utterances
-* `theme`: the selected Utterances theme.
-
-### Code Highlighting
-
-Pick one of [the available colorschemes](https://github.com/probberechts/hexo-theme-cactus/tree/master/source/css/_highlight) and add it to the `_config.yml`:
-
-```yml
-highlight: COLORSCHEME_NAME
-```
-
-### Tags and categories
-
-Tags and categories can be included in the front-matter of your posts. For example:
-
-```markdown
-title: Tags and Categories
-date: 2017-12-24 23:29:53
-tags:
-- Foo
-- Bar
-categories: 
-- Baz
----
-
-This post contains 2 tags and 1 category.
-```
-
-You can create a page with a tag cloud by running:
-
-```sh
-$ hexo new page tags
-```
-
-Next, add `type: tags` to the front-matter of `source/tags/index.md`. You can also
-add a tag cloud to the home page by setting the `tags_overview` option to `true`.
-
-Similarly, you can create a page with an overview of all categories by running:
-
-```sh
-$ hexo new page categories
-```
-
-and adding `type: categories` to the front-matter of `source/categories/index.md`. 
-
-Finally, don't forget to create a link to these pages, for example in the navigation menu:
-
-```yml
-nav:
-  tag: /tags/
-  category: /categories/
-```
-
-### Local search
-
-First, install the [hexo-generate-search](https://www.npmjs.com/package/hexo-generator-search)
-plugin, which will generate a search index file.
-
-```git
-$ npm install hexo-generator-search --save
-```
-
-Next, create a page to display the search engine:
-
-```sh
-$ hexo new page search
-```
-
-and put `type: search` in the front-matter.
-
-```markdown
-title: Search
-type: search
----
-```
-
-Finally, edit the `_config.yml` and add a link to the navigation menu.
-
-```yml
-nav:
-  search: /search/
-```
-
-## License
-
-MIT
+### [2/13~18 주간 복음방 진행 방향]
+
+- 주 2회 복음방
+    - 1회 : 교사님과 복음방 (구약/신약 복슴 및 주일 센터만남 소개)
+    - 2회 : **2/19 오후 4시 부원센터** 방문 후 강사님과 전도사님 만남 (특강 OR 친교)
+
+### [복음방 파악할 내용 (공통)]
+
+> <복음방 1회때 파악할 것>
+> 
+> - 인간관계 파악 (인간 관계 마인드맵 그리기)
+>     - “나 자신을 위해 성경을 배우는 것 만큼 사회성도 길러보는 시간이 되자.”라며 시키기. (참고 멘트.)
+> - 가족(형제) 및 부모님 파악 (부모님 출,퇴근 부분, 부모님의 관계까지 파악)
+>     - 휴대폰 위치추적 및 사용 내용 확인 하시는지
+>     - 돈관리 부모님이 하시는지
+>         - 예전에 돈관리를 잘못해서 혼난 적이 있는지 등등.
+> - 온/오프라인 파악 (게임, 당근 거래 등등)
+> - 어느정도 교회에 육적으로 메여있는지 파악이 중요.
+>     - 헌금 부분 파악.
+>     - 교회에서 장학금 받는건 없는지 파악.
+>     - 교회에서 주는 선물 스케일 파악.
+> - 장애명 확인 필요.
+> - 수강신청서에 필요한 부분 파악 (ex. 혈액형, 등등) (텔레확인 후 추가 파악)
+> 
+> <김태현 심령 추가 파악할 것>
+> 
+> - 오전 시간 활동 파악.
+> 
+> <정규민 심령 추가 파악할 것>
+> 
+> - 권순범 심령에 대해 자세한 정보 파악.
+
+### [센터 수강시 필요사항]
+
+> <220 개강>
+> 
+> - 서류제출(인,교,섬 정하기)
+>     - 정규민 섬김이 정하기.
+>     - 김태현 인도자 : 임태연 사업부장
+> - 교사/잎사귀 중 주1회 이상 같이 센터 도와줘야함.
+>     - 온라인 센터 수업과 개인수업 병행 학습 예정 (개인 수업 확정X)
+>         - 주 1회 온라인 수업, 주 2회 개인 수업 등 유동적으로 진행 될 수 있음.
+>         - 강사님이 심령들 파악 후 결정될 예정.
+
+### [강사님 당부하신 부분]
+
+> <강사님 요청>
+> 
+> - 일반적인 접근 방식 외에 여러가지 측면을 생각해야 함.
+> 1. 상황 판단 및 대처 능력 - 중학생 수준
+>     1. 부모님의 걱정이 큼.
+>     : **부모님 성향 파악**이 우선적으로 되어야 함.
+> 2. 질문을 잘 해야 함.
+>     1. 집, 부모님 직업, 휴대폰 위치추적 및 사용 내용 확인 하시는지,
+>     한달 용돈, 돈관리 부모님이 하시는지, 돈을 잘못써서 부모님이 혼내신적 없는지 등의
+>     정보 파악이 필요
+> 3. 각종 상황 대처에 대한 훈련이 필요함. (센터 들어간 후에 적용 예정.)
+>     1. ex) 부모님이 전화 왔을 때 어떻게 대처할 것인가?
+> 4. **권순범심령 추가 정보 파악** 필요.
+>     1. 정규민 심령을 통해 알아볼 예정.
+> 5. 센터 수업이 듣기 싫어도 들을 수 있도록 습관을 잡아가야 함.
+>     1. 이해 안되더라도 아멘 화답하고 찬양할 수 있도록 온라인도 들어가야 함.
+>     2. 앞으로 유월 후에 진행될 만남이나 예배 대비.
+
+### [복음방 1회때 해야할 내용]
+
+> <다음 만남시 복음방 방향>
+> 
+> 1. **정보 파악 (제일 첫번째 내용)**
+> 2. **성경 목록 외우기 (숙제 시키기)**
+>     - 숙제 시키기 : 성경 목록 외우게 하기.
+>         - “신앙인이라면 당연히 외워야 한다”라고 말하며 시키기. (참고 멘트.)
+>     - (창~말, 마~계 : 노래, 성경 줄임말 *창,출,레,민,신~~)
+>     - 시험 경쟁 붙이기. (다음 만남 때 시험쳐서 잘 친 사람 상품준다고 얘기하기.)
+> 3. **구약과 신약** 
+> - 다음시간에 역사,교훈,예언,성취 네 가지 복습 및 점검 필요.
+>     - ex) 예시와 질문들을 들어가면서 퀴즈로 복습 시키기.
+> - 예언과 성취 = 언약 핵심
+>     - 알고 있는 수준에서 하나씩, 물고를 들고 가야 함.
+>     1. 성경을 왜 주셨을까?
+>     2. OO이는 성경이 없어도 믿음을 가지고 있지 않아?
+>     3. 아담과 하와 한테도 성경을 주셨을까? 그때도 성경이 있었을까?
+>     4. 언제부터 성경을 주셨을까? 주게 된 이유와 때는 언제일까?
+>     5. 구약의 언약의 대상, 신약의 언약의 대상
+>     6. 구약이 깨어진 이유 → 신약에 대해 앞으로 센터에서 확인해 볼 것.
+> 1. **센터 소개**
+> - 주일 오후 4시 부원센터
